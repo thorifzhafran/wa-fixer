@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta property="og:url" content="" />
+    <meta property="og:type" content="website" />
+
+    <meta property="og:title" content="buat teks,buat string" />
+    <meta property="og:image" itemprop="image" content="#" />
+    <title>WhatsApp Number Fixer - pecandubisnis.com</title>
+
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+</head>
+
+<body style="background-color: black; font-family: Poppins;">
+    <div class="container" style="margin-top:30px">
+        <div class="row text-center">
+            <div class="col-12">
+                <p class="text-center">
+                    <h1 class="text-center" style="color: white; font-weight: bold;">WHATSAPP NUMBER FIXER</h1>
+                </p>
+            </div>
+        </div>
+        <div class="row" style="margin-bottom-10px;">
+            <div class="col-md-12 col-lg-12 col-xs-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3><b>FUNGSI</b></h3>
+                    </div>
+                    <div class="card-body">
+                        <p>Misal anda punya list nomor hp/wa yang masih berantakan seperti dibawah ini :</p>
+                        <ul>
+                            <li>0896 9530 9913</li>
+                            <li>0812-3445-3444</li>
+                            <li>62896-9530-9911</li>
+                        </ul>
+                        <p>Dan anda mau merubahnya menjadi</p>
+                        <ul>
+                            <li>6289695309913</li>
+                            <li>6281234453444</li>
+                            <li>629695309911</li>
+                        </ul>
+                        <p>Silakan gunakan tools ini</p>
+                    </div>
+                </div>
+                <br>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 col-lg-6 col-xs-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3><b>INPUT DATA</b></h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label id="labelsumber">Paste Data Sumber Disini (Anda sudah memasukkan 0 Data)</label>
+                            <textarea class="form-control" rows="5" id="sumber"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-primary" style="opacity: 0;">PROSES</button>
+                        </div>
+                    </div>
+                </div>
+                <br>
+            </div>
+
+            <div class="col-md-6 col-lg-6 col-xs-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3><b>HASIL DATA</b></h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label id="labelhasil">Total Data Hasil : 0</label>
+                            <textarea class="form-control" rows="5" id="hasil">
+                            </textarea>
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-success" onclick="copy()" style="width: 100%;">COPY HASIL</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
+    <script>
+        function proses() {
+            var sumber = document.getElementById('sumber').value;
+            baris = sumber.split('\n');
+            hasil = '';
+            totalhasil = 0;
+
+            //untuk baris pertama
+            angka = baris[0];
+            angka = angka.replace(/[^0-9]+/g, "");
+
+            //ambil 2 angka pertama
+            duaangka = angka.substr(0, 2);
+            panjangangka = angka.length;
+            if (duaangka == '08') {
+                angka = '62' + angka.substr(1, panjangangka - 1);
+                hasil = angka;
+                totalhasil = totalhasil + 1;
+            } else {
+                satuangka = angka.substr(0, 1);
+                if (satuangka == '8') {
+                    angka = '62' + angka;
+                    hasil = angka;
+                    totalhasil = totalhasil + 1;
+                } else {
+                    if (angka !== '') {
+                        hasil = angka;
+                        totalhasil = totalhasil + 1;
+                    }
+                }
+            }
+
+            //untuk baris lainnya
+            for (var i = 1; i < baris.length; i++) {
+                angka = baris[i];
+                angka = angka.replace(/[^0-9]+/g, "");
+
+                //ambil 2 angka pertama
+                duaangka = angka.substr(0, 2);
+                panjangangka = angka.length;
+                if (duaangka == '08') {
+                    angka = '62' + angka.substr(1, panjangangka - 1);
+                    hasil = hasil + '\n' + angka;
+                    totalhasil = totalhasil + 1;
+                } else {
+                    satuangka = angka.substr(0, 1);
+                    if (satuangka == '8') {
+                        angka = '62' + angka;
+                        hasil = hasil + '\n' + angka;
+                        totalhasil = totalhasil + 1;
+                    } else {
+                        if (angka !== '') {
+                            hasil = hasil + '\n' + angka;
+                            totalhasil = totalhasil + 1;
+                        }
+                    }
+                }
+            }
+            labelnyahasil = 'Total Data Hasil : ' + totalhasil;
+            document.getElementById("hasil").innerHTML = hasil;
+            $("#labelhasil").text(labelnyahasil);
+        }
+
+        function copy() {
+            var textarea = document.getElementById("hasil");
+            textarea.select();
+            document.execCommand("copy");
+
+            textarea.select();
+            document.execCommand("copy");
+
+            swal({
+                title: "Copy!",
+                icon: "success",
+                text: "data sudah berhasil di copy. silahkan buka excel dan paste di excel anda",
+                timer: 1500,
+                showConfirmButton: false
+            });
+
+        }
+
+
+        var oldVal = "";
+        $("#sumber").on("change keyup paste", function() {
+            var currentVal = $(this).val();
+            barisnya = currentVal.split('\n');
+            jumlahbaris = barisnya.length;
+            if (currentVal == oldVal) {
+                return; //check to prevent multiple simultaneous triggers
+            }
+
+            oldVal = currentVal;
+            //action to be performed on textarea changed
+            labelnyasumber = "Paste Data Sumber Disini (Anda sudah memasukkan " + jumlahbaris + " Data)";
+            $("#labelsumber").text(labelnyasumber);
+            // alert("jumlah data "+jumlahbaris+"");
+            proses()
+        });
+    </script>
+
+</body>
+
+</html>
