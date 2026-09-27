@@ -7,7 +7,7 @@
 
 A lightweight, high-performance, single-page application (SPA) designed to clean, sanitize, and format messy lists of phone numbers into standardized international WhatsApp formats instantly.
 
-![WhatsApp Number Sanitizer Banner]([https://github.com/thorifzhafran/wa-fixer/blob/main/Screenshot%202026-09-27%20225155.png](https://github.com/thorifzhafran/wa-fixer/blob/main/Screenshot%202026-09-27%20225155.png?raw=true)) <!-- Replace with real screenshot if available -->
+![WhatsApp Number Sanitizer Banner](https://raw.githubusercontent.com/thorifzhafran/wa-fixer/refs/heads/main/Screenshot%202026-09-27%20225155.png) <!-- Replace with real screenshot if available -->
 
 ---
 
